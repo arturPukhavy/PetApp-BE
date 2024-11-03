@@ -1,0 +1,6 @@
+@PetApp.WebAPI_HostAddress = http://localhost:6969
+
+GET {{PetApp.WebAPI_HostAddress}}/api/users
+Accept: application/json
+
+###
