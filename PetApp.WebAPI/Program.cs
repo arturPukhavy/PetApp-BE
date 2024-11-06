@@ -1,4 +1,3 @@
-
 using Microsoft.EntityFrameworkCore;
 
 namespace PetApp.WebAPI
@@ -27,6 +26,19 @@ namespace PetApp.WebAPI
 			{
 				app.UseSwagger();
 				app.UseSwaggerUI();
+			}
+			else
+			{
+				app.Use(async (context, next) =>
+				{
+					if (context.Request.Path == "/")
+					{
+						await context.Response.WriteAsync("Welcome to PetApp API!");
+						return;
+					}
+
+					await next();
+				});
 			}
 
 			app.UseAuthorization();
