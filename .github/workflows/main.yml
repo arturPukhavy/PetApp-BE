@@ -1,0 +1,49 @@
+name: Build, Update Database, and Copy to S3
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+
+    # Step to set up .NET Core SDK
+    - name: Setup .NET Core SDK
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: '8.0'  # Update this with your .NET version
+
+    # Step to build the application
+    - name: Build the Project
+      run: dotnet build ./PetApp.WebAPI.sln --configuration Release
+
+    # Step to run tests
+
+    # Step to run migrations
+    #- name: Update Database
+    #  run: |
+    #    cd YourWebApiProject
+    #    dotnet ef database update
+    #  env:
+    #    ConnectionString: ${{ secrets.DB_CONNECTION_STRING }}
+
+    # Step to publish the application files
+    - name: Publish the Project
+      run: dotnet publish ./PetApp.WebAPI/PetApp.WebAPI.csproj -c Release -o publish
+
+    # Step to copy published files to S3
+    - name: Copy Files to S3
+      uses: jakejarvis/s3-sync-action@master
+      with:
+        args: --acl public-read --follow-symlinks
+      env:
+        AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        AWS_REGION: 'us-east-1'  # Optional: defaults to us-east-1
+        SOURCE_DIR: 'publish'
+
+    # Optional: Run after-deployment tests or health checks
