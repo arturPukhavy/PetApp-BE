@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace PetApp.WebAPI.Models
 {
-	public class AnimalSitter
+	public class PetSitter
 	{
 		[Key]
 		[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -16,10 +16,10 @@ namespace PetApp.WebAPI.Models
 		public virtual Sitter Sitter { get; set; }
 
 		[Required]
-		public int AnimalId { get; set; }
+		public int PetId { get; set; }
 
-		[ForeignKey("AnimalId")]
-		public virtual Animal Animal { get; set; }
+		[ForeignKey("PetId")]
+		public virtual Pet Pet { get; set; }
 
 		[Required]
 		public double Price { get; set; }

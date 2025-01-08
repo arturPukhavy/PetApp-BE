@@ -3,22 +3,20 @@ using System.ComponentModel.DataAnnotations;
 
 namespace PetApp.WebAPI.Models
 {
-	public class UnavailableTimeframeSitter
+	public class Chat
 	{
 		[Key]
 		[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
 		public int Id { get; set; }
 
-		[Required]
 		public int SitterId { get; set; }
 
 		[ForeignKey("SitterId")]
-		public virtual Sitter Sitter { get; set; }
+		public Sitter Sitter { get; set; }
 
-		[Required]
-		public int UnavailableTimeframeId { get; set; }
+		public int UserId { get; set; }
 
-		[ForeignKey("UnavailableTimeframeId")]
-		public virtual UnavailableTimeframe UnavailableTimeframe { get; set; }
+		[ForeignKey("UserId")]
+		public User User { get; set; }
 	}
 }

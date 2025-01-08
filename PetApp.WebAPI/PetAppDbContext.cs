@@ -52,17 +52,17 @@ namespace PetApp.WebAPI
 
 		public DbSet<AdState> AdStates { get; set; }
 
-		public DbSet<Animal> Animals { get; set; }
+		public DbSet<Chat> Chats { get; set; }
 
-		public DbSet<AnimalSitter> AnimalSitters { get; set; }
+		public DbSet<Message> Messages { get; set; }
+
+		public DbSet<Pet> Pets { get; set; }
+
+		public DbSet<PetSitter> PetSitters { get; set; }
 
 		public DbSet<Role> Roles { get; set; }
 
 		public DbSet<Sitter> Sitters { get; set; }
-
-		public DbSet<UnavailableTimeframe> UnavailableTimeframes { get; set; }
-
-		public DbSet<UnavailableTimeframeSitter> UnavailableTimeframeSitters { get; set; }
 
 		public DbSet<User> Users { get; set; }
 	}

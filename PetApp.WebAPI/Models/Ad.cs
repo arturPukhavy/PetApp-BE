@@ -21,24 +21,14 @@ namespace PetApp.WebAPI.Models
 
 		public string Location { get; set; }
 
-		public int AnimalId { get; set; }
+		public int PetId { get; set; }
 
-		[ForeignKey("AnimalId")]
-		public Animal Animal { get; set; }
-
-		public string AnimalName { get; set; }
-
-		public int AnimalAge { get; set; }
-
-		public string AnimalBreed { get; set; }
-
-		public byte[] AnimalPhoto { get; set; }
+		[ForeignKey("PetId")]
+		public Pet Pet { get; set; }
 
 		public DateTime StartDate { get; set; }
 
 		public DateTime EndDate { get; set; }
-
-		public string VisitTime { get; set; }
 
 		[Required]
 		public int AdStateId { get; set; }
