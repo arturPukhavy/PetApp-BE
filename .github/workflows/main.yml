@@ -22,6 +22,10 @@ jobs:
 
     # Step to run tests
 
+    # Install EF Core tools
+    - name: Install EF tools
+      run: dotnet tool install dotnet-ef
+
     # Step to run migrations
     - name: Update Database
       run: dotnet ef database update --project ./PetApp.WebAPI/PetApp.WebAPI.csproj
