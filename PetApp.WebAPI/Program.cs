@@ -11,6 +11,11 @@ namespace PetApp.WebAPI
 			// change to AWS Secret Manager in future
 			string connectionString = Environment.GetEnvironmentVariable("PetAppConnectionString", EnvironmentVariableTarget.User);
 
+			if (string.IsNullOrEmpty(connectionString))
+			{
+				throw new Exception("Connection string is not set");
+			}
+
 			builder.Services.AddDbContext<PetAppDbContext>(options =>
 			    options.UseNpgsql(connectionString));
 
