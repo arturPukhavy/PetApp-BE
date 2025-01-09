@@ -24,7 +24,7 @@ jobs:
 
     # Install EF Core tools
     - name: Install EF tools
-      run: dotnet tool install dotnet-ef
+      run: dotnet tool install --global dotnet-ef
 
     # Step to run migrations
     - name: Update Database
