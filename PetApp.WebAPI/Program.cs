@@ -9,7 +9,7 @@ namespace PetApp.WebAPI
 			WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
 			// change to AWS Secret Manager in future
-			string connectionString = Environment.GetEnvironmentVariable("PetAppConnectionString", EnvironmentVariableTarget.User);
+			string connectionString = Environment.GetEnvironmentVariable("PetAppConnectionString") ?? Environment.GetEnvironmentVariable("PetAppConnectionString", EnvironmentVariableTarget.User);
 
 			if (string.IsNullOrEmpty(connectionString))
 			{
