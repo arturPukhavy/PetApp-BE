@@ -23,12 +23,10 @@ jobs:
     # Step to run tests
 
     # Step to run migrations
-    #- name: Update Database
-    #  run: |
-    #    cd YourWebApiProject
-    #    dotnet ef database update
-    #  env:
-    #    ConnectionString: ${{ secrets.DB_CONNECTION_STRING }}
+    - name: Update Database
+      run: dotnet ef database update --project ./PetApp.WebAPI/PetApp.WebAPI.csproj
+      env:
+        ConnectionString: ${{ secrets.DB_CONNECTION_STRING }}
 
     # Step to publish the application files
     - name: Publish the Project
