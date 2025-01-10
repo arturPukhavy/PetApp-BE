@@ -224,10 +224,6 @@ namespace PetApp.WebAPI.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("Test")
-                        .IsRequired()
-                        .HasColumnType("text");
-
                     b.HasKey("Id");
 
                     b.ToTable("Roles");
@@ -236,8 +232,7 @@ namespace PetApp.WebAPI.Migrations
                         new
                         {
                             Id = 1,
-                            Name = "User",
-                            Test = "Test"
+                            Name = "User"
                         });
                 });
 
