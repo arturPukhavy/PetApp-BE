@@ -12,7 +12,8 @@ namespace PetApp.WebAPI
 				new Role
 				{
 					Id = 1,
-					Name = "User"
+					Name = "User",
+					Test = "Test"
 				});
 
 			modelBuilder.Entity<User>().HasData(

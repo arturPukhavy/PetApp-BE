@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using PetApp.WebAPI;
@@ -11,9 +12,11 @@ using PetApp.WebAPI;
 namespace PetApp.WebAPI.Migrations
 {
     [DbContext(typeof(PetAppDbContext))]
-    partial class PetAppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250110182019_TestShemaUpdate")]
+    partial class TestShemaUpdate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
