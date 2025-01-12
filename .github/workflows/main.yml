@@ -50,5 +50,17 @@ jobs:
         SOURCE_DIR: 'publish'
 
     # Step to copy to EC2
+    - name: Copy binaries to EC2
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.EC2_IP }}
+        username: Administrator
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        script: |
+          powershell -Command "Import-Module WebAdministration"
+          powershell -Command "Stop-WebSite -Name 'PetApp'"
+          aws s3 cp s3://dev-pet-share-webapi C:\PetApp --recursive
+          powershell -Command "Start-Sleep -Seconds 10"
+          powershell -Command "Start-WebSite -Name 'PetApp'"
 
     # Optional: Run after-deployment tests or health checks
