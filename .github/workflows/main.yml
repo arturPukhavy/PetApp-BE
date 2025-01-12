@@ -50,25 +50,5 @@ jobs:
         SOURCE_DIR: 'publish'
 
     # Step to copy to EC2
-    - name: Copy to EC2
-      uses: crazy-max/ghaction-winrm@v1
-      with:
-        hostname: ${{ secrets.EC2_IP }}
-        username: ${{ secrets.WINRM_USERNAME }}
-        password: ${{ secrets.WINRM_PASSWORD }}
-        operation_timeout: 120
-        script: |
-          # Import the WebAdministration module
-            Import-Module WebAdministration
-          # Stop the IIS site
-            Stop-WebSite -Name "PetApp"
-          # Verify the site is stopped
-            $site = Get-WebSite -Name "PetApp"
-            Write-Output "The site state is: $($site.State)"
-          # sync the latest binaries
-            aws s3 cp s3://dev-pet-share-webapi C:\PetApp --recursive
-            Start-Sleep -Seconds 10
-            Start-WebSite -Name "PetApp"
-            Write-Output "The site state is: $($site.State)"
 
     # Optional: Run after-deployment tests or health checks
