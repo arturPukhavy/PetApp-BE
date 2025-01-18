@@ -52,5 +52,5 @@ jobs:
     # Step to copy to EC2
     - name: Trigger copy to EC2
       run: |
-        curl http://${{ secrets.EC2_IP }}:89/sync
+        curl -H 'Authorization: ${{ secrets.AUTH_TOKEN }}' http://${{ secrets.EC2_IP }}:89/sync 
     # Optional: Run after-deployment tests or health checks
