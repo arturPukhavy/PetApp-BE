@@ -11,5 +11,12 @@ namespace PetApp.WebAPI.Controllers
 		{
 			return Ok("Ok");
 		}
+
+		[HttpGet]
+		[Route("api")]
+		public OkObjectResult Default()
+		{
+			return Ok("Ok");
+		}
 	}
 }
