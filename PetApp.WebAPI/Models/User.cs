@@ -15,7 +15,7 @@ namespace PetApp.WebAPI.Models
 
 		public string Password { get; set; }
 
-		public string Contacts { get; set; }
+		public string? Contacts { get; set; }
 
 		[DataType(DataType.DateTime)]
 		public DateTime DateRegistered { get; set; }

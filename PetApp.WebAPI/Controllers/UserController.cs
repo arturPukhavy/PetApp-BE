@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using PetApp.WebAPI.Models;
 
 namespace PetApp.WebAPI.Controllers
 {
@@ -16,12 +15,11 @@ namespace PetApp.WebAPI.Controllers
 			_context = context;
 		}
 
-
 		[HttpGet]
 		[Route("api/users")]
-		public async Task<IEnumerable<User>> Get()
+		public async Task<IActionResult> Get()
 		{
-			return await _context.Users.ToListAsync();
+			return new JsonResult(await _context.Users.ToListAsync());
 		}
 	}
 }
