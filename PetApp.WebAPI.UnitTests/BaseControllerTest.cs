@@ -4,7 +4,7 @@ namespace PetApp.WebAPI.UnitTests
 {
 	public class BaseControllerTest
 	{
-		protected PetAppDbContext CreateDbContext(string dbName)
+		protected static PetAppDbContext CreateDbContext(string dbName)
 		{
 			DbContextOptions<PetAppDbContext> options = new DbContextOptionsBuilder<PetAppDbContext>()
 				.UseInMemoryDatabase(databaseName: dbName)

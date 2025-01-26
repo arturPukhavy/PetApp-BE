@@ -28,7 +28,6 @@ namespace PetApp.WebAPI.Controllers
 			};
 
 			await context.Users.AddAsync(newUser);
-
 			await context.SaveChangesAsync();
 
 			return Ok("Ok");
