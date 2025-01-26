@@ -29,11 +29,11 @@ namespace PetApp.WebAPI.MiddlewareExtensions
 		public static void AddAppAuthentication(this IServiceCollection services)
 		{
 			// change to AWS Secret Manager in future
-			string jwtSecretKey = Environment.GetEnvironmentVariable("JwtSecretKey") ?? Environment.GetEnvironmentVariable("JwtSecretKey", EnvironmentVariableTarget.User);
+			string jwtSecretKey = Environment.GetEnvironmentVariable("PetAppConnectionString") ?? Environment.GetEnvironmentVariable("PetAppConnectionString", EnvironmentVariableTarget.User);
 
 			if (string.IsNullOrEmpty(jwtSecretKey))
 			{
-				throw new Exception("Authentication token is not set");
+				throw new Exception($"Authentication token is not set");
 			}
 
 			services
