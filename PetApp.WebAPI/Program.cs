@@ -1,4 +1,9 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 namespace PetApp.WebAPI
 {
@@ -23,6 +28,28 @@ namespace PetApp.WebAPI
 			// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 			builder.Services.AddEndpointsApiExplorer();
 			builder.Services.AddSwaggerGen();
+
+			// change to AWS Secret Manager in future
+			string jwtSecretKey = Environment.GetEnvironmentVariable("JwtSecretKey") ?? Environment.GetEnvironmentVariable("JwtSecretKey", EnvironmentVariableTarget.User);
+
+			builder.Services
+				.AddAuthentication(x =>
+				{
+					x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+					x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+				})
+				.AddJwtBearer(x =>
+				{
+					x.RequireHttpsMetadata = false;
+					x.SaveToken = true;
+					x.TokenValidationParameters = new TokenValidationParameters
+					{
+						ValidateIssuerSigningKey = true,
+						IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(jwtSecretKey)),
+						ValidateIssuer = false,
+						ValidateAudience = false
+					};
+				});
 
 			var app = builder.Build();
 
