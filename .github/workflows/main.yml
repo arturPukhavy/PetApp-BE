@@ -22,7 +22,7 @@ jobs:
 
     # Step to run tests
     - name: Run unit tests
-      run: dotnet test ./PetApp.WebAPI.UnitTests/PetApp.WebAPI.UnitTests.csproj --no-build --verbosity normal
+      run: dotnet test ./PetApp.WebAPI.UnitTests/bin/Release/net8.0/PetApp.WebAPI.UnitTests.dll --no-build --verbosity normal
       
     # Install EF Core tools
     - name: Install EF tools
