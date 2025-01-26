@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35312.102
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PetApp.WebAPI", "PetApp.WebAPI\PetApp.WebAPI.csproj", "{EAF87B13-F242-47AE-B9FC-580F3D135560}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PetApp.WebAPI", "PetApp.WebAPI\PetApp.WebAPI.csproj", "{EAF87B13-F242-47AE-B9FC-580F3D135560}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PetApp.WebAPI.UnitTests", "PetApp.WebAPI.UnitTests\PetApp.WebAPI.UnitTests.csproj", "{54A5BB71-3954-4DA6-B1D1-F9BFB808562E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{EAF87B13-F242-47AE-B9FC-580F3D135560}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EAF87B13-F242-47AE-B9FC-580F3D135560}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EAF87B13-F242-47AE-B9FC-580F3D135560}.Release|Any CPU.Build.0 = Release|Any CPU
+		{54A5BB71-3954-4DA6-B1D1-F9BFB808562E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{54A5BB71-3954-4DA6-B1D1-F9BFB808562E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{54A5BB71-3954-4DA6-B1D1-F9BFB808562E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{54A5BB71-3954-4DA6-B1D1-F9BFB808562E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
