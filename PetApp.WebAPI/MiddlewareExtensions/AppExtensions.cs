@@ -31,6 +31,11 @@ namespace PetApp.WebAPI.MiddlewareExtensions
 			// change to AWS Secret Manager in future
 			string jwtSecretKey = Environment.GetEnvironmentVariable("JwtSecretKey") ?? Environment.GetEnvironmentVariable("JwtSecretKey", EnvironmentVariableTarget.User);
 
+			if (string.IsNullOrEmpty(jwtSecretKey))
+			{
+				throw new Exception("Authentication token is not set");
+			}
+
 			services
 				.AddAuthentication(x =>
 				{
