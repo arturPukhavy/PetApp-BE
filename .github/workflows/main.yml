@@ -21,7 +21,9 @@ jobs:
       run: dotnet build ./PetApp.WebAPI.sln --configuration Release
 
     # Step to run tests
-
+    - name: Run unit tests
+      run: dotnet test ./PetApp.WebAPI.UnitTests/PetApp.WebAPI.UnitTests.csproj --no-build --verbosity normal
+      
     # Install EF Core tools
     - name: Install EF tools
       run: dotnet tool install --global dotnet-ef
