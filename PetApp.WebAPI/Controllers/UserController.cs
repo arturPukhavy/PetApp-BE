@@ -19,6 +19,8 @@ namespace PetApp.WebAPI.Controllers
 		[Route("api/users")]
 		public async Task<IActionResult> Get()
 		{
+			this._logger.LogInformation("Getting all users");
+
 			return new JsonResult(await _context.Users.ToListAsync());
 		}
 	}

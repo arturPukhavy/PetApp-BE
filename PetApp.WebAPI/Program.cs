@@ -1,4 +1,5 @@
 using PetApp.WebAPI.MiddlewareExtensions;
+using Serilog;
 
 namespace PetApp.WebAPI
 {
@@ -7,6 +8,16 @@ namespace PetApp.WebAPI
 		public static void Main(string[] args)
 		{
 			WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
+
+			// Configure Serilog
+			Log.Logger = new LoggerConfiguration()
+				.MinimumLevel.Debug()
+				.WriteTo.File("logs/serilog.txt", rollingInterval: RollingInterval.Day)
+				.CreateLogger();
+
+			// Add Serilog
+			builder.Services.AddLogging(loggingBuilder =>
+				loggingBuilder.AddSerilog(dispose: true));
 
 			builder.Services.AddAppDatabase();
 			builder.Services.AddControllers();
