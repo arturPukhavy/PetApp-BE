@@ -10,7 +10,7 @@ namespace PetApp.WebAPI.Services
 		public string CreateJwtToken(string userName)
 		{
 			// change to AWS Secret Manager in future
-			string jwtSecretKey = Environment.GetEnvironmentVariable("JwtSecretKey") ?? Environment.GetEnvironmentVariable("JwtSecretKey", EnvironmentVariableTarget.User);
+			string jwtSecretKey = Environment.GetEnvironmentVariable("PetAppConnectionString") ?? Environment.GetEnvironmentVariable("PetAppConnectionString", EnvironmentVariableTarget.User);
 
 			SecurityTokenDescriptor tokenDescriptor = new()
 			{
