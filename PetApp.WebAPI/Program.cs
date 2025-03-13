@@ -51,7 +51,8 @@ namespace PetApp.WebAPI
 				});
 			}
 
-			//app.UseAuthorization();
+			app.UseAuthorization();
+			app.UseAuthorization();
 			app.MapControllers();
 
 			app.Run();

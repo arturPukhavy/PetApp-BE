@@ -1,5 +1,7 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using PetApp.WebAPI.Models;
 
 namespace PetApp.WebAPI.Controllers
 {
@@ -19,9 +21,22 @@ namespace PetApp.WebAPI.Controllers
 		[Route("api/users")]
 		public async Task<IActionResult> Get()
 		{
-			this._logger.LogInformation("Getting all users");
-
 			return new JsonResult(await _context.Users.ToListAsync());
+		}
+
+		[HttpGet]
+		[Route("api/users/{id}")]
+		[Authorize]
+		public async Task<IActionResult> Get(int id)
+		{
+			User user = await _context.Users.FirstOrDefaultAsync(u => u.Id == id);
+
+			if (user == null)
+			{
+				return NotFound(new { Message = "User not found" });
+			}
+
+			return new JsonResult(user);
 		}
 	}
 }
