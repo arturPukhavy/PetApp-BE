@@ -1,4 +1,5 @@
 ﻿using Microsoft.IdentityModel.Tokens;
+using PetApp.WebAPI.Utilities;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
@@ -10,7 +11,12 @@ namespace PetApp.WebAPI.Services
 		public string CreateJwtToken(string userName)
 		{
 			// change to AWS Secret Manager in future
-			string jwtSecretKey = Environment.GetEnvironmentVariable("PetAppConnectionString") ?? Environment.GetEnvironmentVariable("PetAppConnectionString", EnvironmentVariableTarget.User);
+			string jwtSecretKey = FileUtility.JwtToken;
+
+			if (string.IsNullOrEmpty(jwtSecretKey))
+			{
+				throw new Exception("JWT Secret Key is not found");
+			}
 
 			SecurityTokenDescriptor tokenDescriptor = new()
 			{
